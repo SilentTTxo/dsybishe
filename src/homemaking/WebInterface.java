@@ -43,7 +43,9 @@ public class WebInterface {
         return modelAndView;
     }
 	
-	public String upload(@RequestParam(value = "file", required = false)MultipartFile file,HttpServletRequest request, ModelMap model){
+	@ResponseBody
+	@RequestMapping(value="api/picUpload",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
+	public String upload(@RequestParam(value = "file", required = false)MultipartFile file,HttpServletRequest request, ModelMap model) throws JSONException{
 		System.out.println("开始");  
         String path = request.getSession().getServletContext().getRealPath("upload");  
         String fileName = file.getOriginalFilename();  
@@ -61,8 +63,11 @@ public class WebInterface {
             e.printStackTrace(); 
             return "error"; 
         }  
-        model.addAttribute("fileUrl", request.getContextPath()+"/upload/"+fileName);  
+        model.addAttribute("fileUrl", request.getContextPath()+"/upload/"+fileName);
+        
+        ans = new JSONObject();
+        ans.put("fileUrl", request.getContextPath()+"/upload/"+fileName);
   
-        return "ok";  
+        return ans.toString();  
 	}
 }
