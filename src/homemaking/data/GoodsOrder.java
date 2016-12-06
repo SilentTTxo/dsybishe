@@ -9,6 +9,7 @@ public class GoodsOrder {
 	private int sum;
 	private int goods;
 	private int state;
+	private int uid;
 	public int getId() {
 		return id;
 	}
@@ -18,6 +19,18 @@ public class GoodsOrder {
 	public String getOrdertype() {
 		return ordertype;
 	}
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
 	public void setOrdertype(String ordertype) {
 		this.ordertype = ordertype;
 	}
@@ -26,12 +39,6 @@ public class GoodsOrder {
 	}
 	public void setPrice(double price) {
 		this.price = price;
-	}
-	public double getSumprice() {
-		return sum;
-	}
-	public void setSumprice(double sumprice) {
-		this.sum = sum;
 	}
 	public int getGoods() {
 		return goods;
@@ -45,12 +52,13 @@ public class GoodsOrder {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public GoodsOrder(String ordertype,double price,int sum,int goods) {
+	public GoodsOrder(String ordertype,double price,int sum,int goods,int uid) {
 		// TODO Auto-generated constructor stub
 		this.ordertype = ordertype;
 		this.price = price;
 		this.sum = sum;
 		this.goods = goods;
+		this.uid = uid;
 		this.state = 0;
 	}
 	public GoodsOrder(){

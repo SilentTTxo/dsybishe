@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.commons.httpclient.HttpException;
 import org.json.JSONArray;
@@ -49,8 +50,32 @@ public class GoodsOrderInterface {
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
 			temp.put("price", i.getPrice());
-			temp.put("sumprice",i.getSumprice());
+			temp.put("sumprice",i.getSum());
 			temp.put("goods",i.getGoods());
+			temp.put("uid",i.getUid());
+			temp.put("state",i.getState());
+			gl.put(temp);
+		}
+		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/getUserOrder",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getUserOrder(HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		int uid = Integer.parseInt(session.getAttribute("userid").toString());
+		List<GoodsOrder> ga = goodsOrderMapper.findByUser(uid);
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		for(GoodsOrder i : ga){
+			JSONObject temp = new JSONObject();
+			temp.put("id",i.getId());
+			temp.put("ordertype",i.getOrdertype());
+			temp.put("price", i.getPrice());
+			temp.put("sumprice",i.getSum());
+			temp.put("goods",i.getGoods());
+			temp.put("uid",i.getUid());
 			temp.put("state",i.getState());
 			gl.put(temp);
 		}
@@ -61,9 +86,21 @@ public class GoodsOrderInterface {
 	
 	@ResponseBody
 	@RequestMapping(value="api/goodsOrder/add",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String add(String orderType,String price,int sum,int goods) throws JSONException{
+	public String add(String orderType,String price,int sum,int goods,int uid) throws JSONException{
 		ans = new JSONObject();
-		GoodsOrder goodsOrder = new GoodsOrder(orderType, Double.parseDouble(price), sum, goods);
+		GoodsOrder goodsOrder = new GoodsOrder(orderType, Double.parseDouble(price), sum, goods,uid);
+		goodsOrderMapper.add(goodsOrder);
+		
+		ans.put("code",1);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/addByUser",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String addByUser(String orderType,String price,int sum,int goods,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		int uid = Integer.parseInt(session.getAttribute("userid").toString());
+		GoodsOrder goodsOrder = new GoodsOrder(orderType, Double.parseDouble(price), sum, goods,uid);
 		goodsOrderMapper.add(goodsOrder);
 		
 		ans.put("code",1);
