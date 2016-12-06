@@ -11,13 +11,19 @@
 	</select>
 	
 	<select id="searchByName" parameterType="String" resultType="Goods">
-		select * from GOODS where name like CONCAT('%',#{name},'%' )
+		select * from GOODS where name like #{0}
 	</select>
 	
 	<insert id="add" parameterType="Goods">
-		insert into GOODS values (NULL,#{name},#{price},#{des},#{isSell},#{img})
+		insert into GOODS values (NULL,#{name},#{price},#{des},#{isSell},#{goodstype},#{address},#{sex},#{age},#{img})
 	</insert>
 	<update id="isSell" parameterType="Goods">
 		update GOODS set ISSELL = #{isSell} where id = #{id}
 	</update>
+	<select id="getType" resultType="String">
+		select DISTINCT GOODSTYPE from GOODS 
+	</select>
+	<select id="searchByType" parameterType="String" resultType="Goods">
+		select * from GOODS where goodstype like #{type}
+	</select>
 </mapper>

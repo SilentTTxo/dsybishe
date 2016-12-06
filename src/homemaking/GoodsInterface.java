@@ -50,8 +50,56 @@ public class GoodsInterface {
 			temp.put("name",i.getName());
 			temp.put("price", i.getPrice());
 			temp.put("isSell",i.getIsSell());
+			temp.put("goodstype",i.getGoodstype());
+			temp.put("address",i.getAddress());
+			temp.put("sex",i.getSex());
+			temp.put("age",i.getAge());
 			temp.put("img",i.getImg());
-			temp.put("des",i.getDescribe());
+			temp.put("des",i.getDes());
+			gl.put(temp);
+		}
+		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goods/getType",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getType() throws JSONException{
+		ans = new JSONObject();
+		List<String> ga = goodsMapper.getType();
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		int y=0;
+		for(String i : ga){
+			JSONObject temp = new JSONObject();
+			temp.put("id",y);
+			temp.put("type", i);
+			gl.put(temp);
+			y++;
+		}
+		ans.put("types", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goods/searchByType",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String searchByType(String type) throws JSONException{
+		ans = new JSONObject();
+		List<Goods> ga = goodsMapper.searchByType(type);
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		for(Goods i : ga){
+			JSONObject temp = new JSONObject();
+			temp.put("id",i.getId());
+			temp.put("name",i.getName());
+			temp.put("price", i.getPrice());
+			temp.put("isSell",i.getIsSell());
+			temp.put("goodstype",i.getGoodstype());
+			temp.put("address",i.getAddress());
+			temp.put("sex",i.getSex());
+			temp.put("age",i.getAge());
+			temp.put("img",i.getImg());
+			temp.put("des",i.getDes());
 			gl.put(temp);
 		}
 		ans.put("goods", gl);
@@ -62,7 +110,8 @@ public class GoodsInterface {
 	@RequestMapping(value="api/goods/searchByName",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String searchByName(String name) throws JSONException{
 		ans = new JSONObject();
-		List<Goods> ga = goodsMapper.searchByName(name);
+		String dname = "%"+name+"%";
+		List<Goods> ga = goodsMapper.searchByName(dname);
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
 		for(Goods i : ga){
@@ -71,8 +120,12 @@ public class GoodsInterface {
 			temp.put("name",i.getName());
 			temp.put("price", i.getPrice());
 			temp.put("isSell",i.getIsSell());
+			temp.put("goodstype",i.getGoodstype());
+			temp.put("address",i.getAddress());
+			temp.put("sex",i.getSex());
+			temp.put("age",i.getAge());
 			temp.put("img",i.getImg());
-			temp.put("des",i.getDescribe());
+			temp.put("des",i.getDes());
 			gl.put(temp);
 		}
 		ans.put("goods", gl);
@@ -81,9 +134,9 @@ public class GoodsInterface {
 	
 	@ResponseBody
 	@RequestMapping(value="api/goods/add",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String add(String name,String price,String des,int isSell,String img) throws JSONException{
+	public String add(String name,String price,String des,int isSell,String goodstype,String address,String sex,int age,String img) throws JSONException{
 		ans = new JSONObject();
-		Goods goods = new Goods(name, Double.parseDouble(price), des, isSell, img);
+		Goods goods = new Goods(name, Double.parseDouble(price), des, isSell,goodstype,address,sex,age, img);
 		goodsMapper.add(goods);
 		
 		ans.put("code",1);

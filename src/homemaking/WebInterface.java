@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -48,8 +49,8 @@ public class WebInterface {
 	public String upload(@RequestParam(value = "file", required = false)MultipartFile file,HttpServletRequest request, ModelMap model) throws JSONException{
 		System.out.println("开始");  
         String path = request.getSession().getServletContext().getRealPath("upload");  
-        String fileName = file.getOriginalFilename();  
-//        String fileName = new Date().getTime()+".jpg";  
+        String fileNames = file.getOriginalFilename().substring(file.getOriginalFilename().length()-4,file.getOriginalFilename().length());  
+        String fileName = new Date().getTime()+fileNames;  
         System.out.println(path);  
         File targetFile = new File(path, fileName);  
         if(!targetFile.exists()){  
