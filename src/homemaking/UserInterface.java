@@ -54,6 +54,7 @@ public class UserInterface {
 				ans.put("userid", xx.getId());
 				session.setAttribute("userid", xx.getId());
 				session.setAttribute("username", xx.getUsername());
+				session.setAttribute("power", xx.getPower());
 			}
 			else {
 				ans.put("code", 0);
@@ -81,6 +82,7 @@ public class UserInterface {
 		return ans.toString();
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value="api/user/fixImg",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String fixImg(String img,HttpSession session) throws JSONException{
@@ -96,10 +98,50 @@ public class UserInterface {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="api/user/fixPaypassword",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String fixPaypassword(String oldpassword,String paypassword,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
+		if(xx.getPaypassword().equals(oldpassword)){
+			xx.setPaypassword(paypassword);
+			userMapper.fixPaypassword(xx);
+			
+			ans.put("code", 1);
+			ans.put("msg", "修改成功");
+		}
+		else {
+			ans.put("code", 0);
+			ans.put("msg", "修改失败，密码错误");
+		}
+		
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/user/paypassword",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String paypassword(String paypassword,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
+		if(xx.getPaypassword().equals(paypassword)){
+			
+			ans.put("code", 1);
+			ans.put("msg", "正确");
+		}
+		else {
+			ans.put("code", 0);
+			ans.put("msg", "密码错误");
+		}
+		
+		return ans.toString();
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="api/user/logout",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String logout(HttpSession session) throws JSONException{
 		ans = new JSONObject();
 		session.removeAttribute("userid");
+		session.removeAttribute("username");
+		session.removeAttribute("power");
 		
 		ans.put("code", 1);
 		ans.put("msg", "退出成功");
@@ -128,4 +170,20 @@ public class UserInterface {
 		return ans.toString();
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="api/user/getInfo",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getInfo(HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User ga = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
+		ans.put("code",1);
+		
+			JSONObject temp = new JSONObject();
+			ans.put("id",ga.getId());
+			ans.put("username",ga.getUsername());
+			ans.put("img",ga.getImg());
+			ans.put("money",ga.getMoney());
+			ans.put("isSetPay", ga.getPaypassword().isEmpty());
+			
+		return ans.toString();
+	}
 }

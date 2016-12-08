@@ -11,4 +11,5 @@ public interface UserMapper {
 	User findByName(String username);
 	int register(User user);
 	void fixImg(User user);
+	void fixPaypassword(User user);
 }

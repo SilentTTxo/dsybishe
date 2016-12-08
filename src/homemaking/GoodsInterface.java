@@ -134,9 +134,9 @@ public class GoodsInterface {
 	
 	@ResponseBody
 	@RequestMapping(value="api/goods/add",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String add(String name,String price,String des,int isSell,String goodstype,String address,String sex,int age,String img) throws JSONException{
+	public String add(String name,String price,String des,int isSell,String goodstype,String address,String sex,int age,String tel,String img) throws JSONException{
 		ans = new JSONObject();
-		Goods goods = new Goods(name, Double.parseDouble(price), des, isSell,goodstype,address,sex,age, img);
+		Goods goods = new Goods(name, Double.parseDouble(price), des, isSell,goodstype,address,sex,age, img,tel);
 		goodsMapper.add(goods);
 		
 		ans.put("code",1);

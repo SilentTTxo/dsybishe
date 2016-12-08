@@ -10,12 +10,16 @@
 		select * from GOODSORDER where uid = #{uid}
 	</select>
 	
+	<select id="findByState" resultType="GoodsOrder" parameterType="int">
+		select * from GOODSORDER where state = #{0} and uid = #{1}
+	</select>
+	
 	<select id="findById" parameterType="int" resultType="GoodsOrder">
 		select * from GOODSORDER where id = #{id}
 	</select>
 	
 	<insert id="add" parameterType="GoodsOrder">
-		insert into GOODSORDER values (NULL,#{ordertype},#{price},#{sum},#{goods},#{uid},#{state})
+		insert into GOODSORDER values (NULL,#{ordertype},#{price},#{sum},#{goods},#{uid},#{state},#{tprice})
 	</insert>
 	<update id="state" parameterType="GoodsOrder">
 		update GOODSORDER set STATE = #{state} where id = #{id}

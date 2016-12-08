@@ -10,8 +10,15 @@ public class GoodsOrder {
 	private int goods;
 	private int state;
 	private int uid;
+	private double tprice;
 	public int getId() {
 		return id;
+	}
+	public double getTprice() {
+		return tprice;
+	}
+	public void setTprice(double tprice) {
+		this.tprice = tprice;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -52,7 +59,7 @@ public class GoodsOrder {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public GoodsOrder(String ordertype,double price,int sum,int goods,int uid) {
+	public GoodsOrder(String ordertype,double price,int sum,int goods,int uid,double tprice) {
 		// TODO Auto-generated constructor stub
 		this.ordertype = ordertype;
 		this.price = price;
@@ -60,6 +67,7 @@ public class GoodsOrder {
 		this.goods = goods;
 		this.uid = uid;
 		this.state = 0;
+		this.tprice = tprice;
 	}
 	public GoodsOrder(){
 		

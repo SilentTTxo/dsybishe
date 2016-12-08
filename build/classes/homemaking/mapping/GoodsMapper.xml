@@ -15,7 +15,7 @@
 	</select>
 	
 	<insert id="add" parameterType="Goods">
-		insert into GOODS values (NULL,#{name},#{price},#{des},#{isSell},#{goodstype},#{address},#{sex},#{age},#{img})
+		insert into GOODS values (NULL,#{name},#{price},#{des},#{isSell},#{goodstype},#{address},#{sex},#{age},#{tel},#{img})
 	</insert>
 	<update id="isSell" parameterType="Goods">
 		update GOODS set ISSELL = #{isSell} where id = #{id}

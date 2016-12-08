@@ -6,6 +6,7 @@ public class Goods {
 	private double price;
 	private String des;
 	private String img;
+	private String tel;
 	public String getDes() {
 		return des;
 	}
@@ -17,6 +18,12 @@ public class Goods {
 	}
 	public void setGoodstype(String goodstype) {
 		this.goodstype = goodstype;
+	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 	public String getAddress() {
 		return address;
@@ -72,7 +79,7 @@ public class Goods {
 		this.isSell = isSell;
 	}
 	
-	public Goods(String name,double price,String des,int isSell,String goodstype,String address,String sex,int age,String img){
+	public Goods(String name,double price,String des,int isSell,String goodstype,String address,String sex,int age,String img,String tel){
 		this.name = name;
 		this.price = price;
 		this.des = des;
@@ -82,6 +89,7 @@ public class Goods {
 		this.sex = sex;
 		this.age = age;
 		this.img = img;
+		this.tel = tel;
 	}
 	public Goods(){
 		

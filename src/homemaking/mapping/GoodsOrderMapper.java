@@ -10,6 +10,7 @@ public interface GoodsOrderMapper {
 	GoodsOrder findById(int id);
 	List<GoodsOrder> findAll();
 	List<GoodsOrder> findByUser(int uid);
+	List<GoodsOrder> findByState(int state,int uid);
 	int add(GoodsOrder goodsOrder);
 	void state(GoodsOrder goodsOrder);
 }

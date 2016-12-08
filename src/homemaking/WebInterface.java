@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.httpclient.HttpException;
 import org.json.JSONArray;
@@ -41,6 +42,17 @@ public class WebInterface {
 	public ModelAndView index(){   
         ModelAndView modelAndView = new ModelAndView();    
         modelAndView.setViewName("login");  
+        return modelAndView;
+    }
+	
+	@RequestMapping(value="admin",method=RequestMethod.GET)
+	public ModelAndView admin(HttpSession session){ 
+		ModelAndView modelAndView = new ModelAndView();    
+		if(session.getAttribute("power").toString() != "0"){
+			modelAndView.setViewName("error");
+			return modelAndView;
+		}
+        modelAndView.setViewName("admin");  
         return modelAndView;
     }
 	

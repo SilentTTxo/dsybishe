@@ -7,8 +7,15 @@ public class User {
 	private int power;
 	private int money;
 	private String img;
+	private String paypassword;
 	public int getId() {
 		return id;
+	}
+	public String getPaypassword() {
+		return paypassword;
+	}
+	public void setPaypassword(String paypassword) {
+		this.paypassword = paypassword;
 	}
 	public void setId(int id) {
 		this.id = id;
@@ -49,6 +56,7 @@ public class User {
 		this.img = img;
 		power = -1;
 		money = 0;
+		paypassword = "";
 	}
 	public User(){
 		

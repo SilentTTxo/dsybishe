@@ -15,9 +15,12 @@
 	</select>
 	
 	<insert id="register" parameterType="User">
-		insert into USER values (NULL,#{username},#{password},#{power},#{money},#{img})
+		insert into USER values (NULL,#{username},#{password},#{power},#{money},#{img},#{paypassword})
 	</insert>
 	<update id="fixImg" parameterType="User">
 		update USER set IMG = #{img} where id = #{id}
+	</update>
+	<update id="fixPaypassword" parameterType="User">
+		update USER set PAYPASSWORD = #{paypassword} where id = #{id}
 	</update>
 </mapper>
