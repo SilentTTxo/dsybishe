@@ -23,4 +23,7 @@
 	<update id="fixPaypassword" parameterType="User">
 		update USER set PAYPASSWORD = #{paypassword} where id = #{id}
 	</update>
+	<update id="fixPower" parameterType="User">
+		update USER set POWER = #{power} where id = #{id}
+	</update>
 </mapper>

@@ -56,6 +56,7 @@ public class GoodsInterface {
 			temp.put("age",i.getAge());
 			temp.put("img",i.getImg());
 			temp.put("des",i.getDes());
+			temp.put("tel",i.getTel());
 			gl.put(temp);
 		}
 		ans.put("goods", gl);

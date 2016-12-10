@@ -82,6 +82,24 @@ public class UserInterface {
 		return ans.toString();
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="api/user/registByAdmin",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String registByAdmin(String username,String password,String img,int power,int money) throws JSONException{
+		ans = new JSONObject();
+		User xx = userMapper.findByName(username);
+		if(xx != null){
+			ans.put("code", 0);
+			ans.put("msg","用户名已存在");
+			return ans.toString();
+		}
+		
+		User temp = new User(username,password,img,power,money);
+		userMapper.register(temp);
+		ans.put("code", 1);
+		ans.put("msg", "注册成功");
+		return ans.toString();
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value="api/user/fixImg",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
@@ -90,6 +108,20 @@ public class UserInterface {
 		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
 		xx.setImg(img);
 		userMapper.fixImg(xx);
+		
+		ans.put("code", 1);
+		ans.put("msg", "修改成功");
+		
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/user/fixPower",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String fixPower(int id,int power,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User xx = userMapper.findById(id);
+		xx.setPower(power);
+		userMapper.fixPower(xx);
 		
 		ans.put("code", 1);
 		ans.put("msg", "修改成功");

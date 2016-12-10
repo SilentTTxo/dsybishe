@@ -58,6 +58,14 @@ public class User {
 		money = 0;
 		paypassword = "";
 	}
+	public User(String username,String password,String img,int power,int money){
+		this.username = username;
+		this.password = password;
+		this.img = img;
+		this.power = power;
+		this.money = money;
+		paypassword = "";
+	}
 	public User(){
 		
 	}

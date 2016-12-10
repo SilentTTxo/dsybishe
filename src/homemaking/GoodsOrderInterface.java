@@ -54,7 +54,8 @@ public class GoodsOrderInterface {
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
 			temp.put("price", i.getPrice());
-			temp.put("sumprice",i.getSum());
+			temp.put("tprice", i.getTprice());
+			temp.put("sum",i.getSum());
 			temp.put("goods",i.getGoods());
 			temp.put("uid",i.getUid());
 			temp.put("state",i.getState());
