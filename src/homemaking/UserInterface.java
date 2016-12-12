@@ -218,4 +218,14 @@ public class UserInterface {
 			
 		return ans.toString();
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/user/del",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String del(int id) throws JSONException{
+		ans = new JSONObject();
+		userMapper.del(id);
+		
+		ans.put("code",1);
+		return ans.toString();
+	}
 }

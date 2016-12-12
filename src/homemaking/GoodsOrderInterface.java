@@ -223,4 +223,13 @@ public class GoodsOrderInterface {
 		ans.put("invalid",invalid);
 		return ans.toString();
 	}
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/del",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String del(int id) throws JSONException{
+		ans = new JSONObject();
+		goodsOrderMapper.del(id);
+		
+		ans.put("code",1);
+		return ans.toString();
+	}
 }

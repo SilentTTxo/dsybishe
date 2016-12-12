@@ -13,4 +13,5 @@ public interface GoodsMapper {
 	int add(Goods goods);
 	void isSell(Goods goods);
 	List<String> getType();
+	void del(int id);
 }

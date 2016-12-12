@@ -13,4 +13,5 @@ public interface GoodsOrderMapper {
 	List<GoodsOrder> findByState(int state,int uid);
 	int add(GoodsOrder goodsOrder);
 	void state(GoodsOrder goodsOrder);
+	void del(int id);
 }

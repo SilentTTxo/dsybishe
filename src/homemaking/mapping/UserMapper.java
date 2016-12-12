@@ -13,4 +13,5 @@ public interface UserMapper {
 	void fixImg(User user);
 	void fixPaypassword(User user);
 	void fixPower(User user);
+	void del(int id);
 }

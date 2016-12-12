@@ -380,7 +380,7 @@
           success : function(result){
             result = jQuery.parseJSON(result);
             if(result['code'] == "1"){
-              location.href  = "admin_user_list.html";
+              location.href  = "admin.html";
             }
             else{
               alert("密码错误");

@@ -131,7 +131,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						<ul class="dropdown-menu">
 							
-							<li><a href="login.html"><i class="icon-key"></i> 退出登陆</a></li>
+							<li><a href="api/user/logout"><i class="icon-key"></i> 退出登陆</a></li>
 
 						</ul>
 

@@ -512,6 +512,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 											<th>发布时间</th>
 
 											<th>链接</th>
+											
+											<th></th>
 
 
 										</tr>
@@ -684,8 +686,24 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					showMsg("刷新成功");
 					notice = result['notice'];
 					for(i in notice){
-						$("tbody").append('<tr><td>{id}</td><td>{title}</td><td>{describe}</td><td>{type}</td><td>{time}</td><td>{url}</td></tr>'.format(notice[i]));
+						$("tbody").append('<tr><td>{id}</td><td>{title}</td><td>{describe}</td><td>{type}</td><td>{time}</td><td>{url}</td><td><a href="javascript:" class="btn mini black del" data="{id}"><i class="icon-trash"></i>删除</a></td></tr>'.format(notice[i]));
 					}
+					$(".del").click(function(){
+						$.ajax({
+							type:"GET",
+							url:"./api/notice/del?id="+$(this).attr("data"),
+							success : function(result){
+								result = jQuery.parseJSON(result);
+								if(result['code'] == "1"){
+									showMsg("删除成功");
+									$(".reload").click();
+								}
+								else{
+									showMsg("系统故障")
+								}
+							}
+						})
+					})
 				}
 				else{
 					showMsg("系统故障")

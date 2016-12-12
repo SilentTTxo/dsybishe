@@ -26,4 +26,7 @@
 	<update id="fixPower" parameterType="User">
 		update USER set POWER = #{power} where id = #{id}
 	</update>
+	<delete id="del" parameterType="Integer">
+		DELETE FROM USER where ID = #{id}
+	</delete>
 </mapper>

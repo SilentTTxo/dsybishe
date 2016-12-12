@@ -510,6 +510,8 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 											<th>描述信息</th>
 
 											<th>图片</th>
+											
+											<th></th>
 
 
 										</tr>
@@ -682,8 +684,24 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 					showMsg("刷新成功");
 					ad = result['ad'];
 					for(i in ad){
-						$("tbody").append('<tr><td>{id}</td><td>{url}</td><td>{goodsid}</td><td>{msg}</td><td>{img}</td></tr>'.format(ad[i]));
+						$("tbody").append('<tr><td>{id}</td><td>{url}</td><td>{goodsid}</td><td>{msg}</td><td>{img}</td><td><a href="javascript:" class="btn mini black del" data="{id}"><i class="icon-trash"></i>删除</a></td></tr>'.format(ad[i]));
 					}
+					$(".del").click(function(){
+						$.ajax({
+							type:"GET",
+							url:"./api/ad/del?id="+$(this).attr("data"),
+							success : function(result){
+								result = jQuery.parseJSON(result);
+								if(result['code'] == "1"){
+									showMsg("删除成功");
+									$(".reload").click();
+								}
+								else{
+									showMsg("系统故障")
+								}
+							}
+						})
+					})
 				}
 				else{
 					showMsg("系统故障")

@@ -689,8 +689,24 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						if(user[i].power == 0){
 							user[i].power = '<td><span class="label label-info">管理员</span></td>'
 						}
-						$("tbody").append('<tr><td>{id}</td><td>{username}</td><td>{password}</td><td>{money}</td><td>{img}</td>{power}</tr>'.format(user[i]));
+						$("tbody").append('<tr><td>{id}</td><td>{username}</td><td>{password}</td><td>{money}</td><td>{img}</td>{power}<td><a href="javascript:" class="btn mini black del" data="{id}"><i class="icon-trash"></i>删除</a></td</tr>'.format(user[i]));
 					}
+					$(".del").click(function(){
+						$.ajax({
+							type:"GET",
+							url:"./api/user/del?id="+$(this).attr("data"),
+							success : function(result){
+								result = jQuery.parseJSON(result);
+								if(result['code'] == "1"){
+									showMsg("删除成功");
+									$(".reload").click();
+								}
+								else{
+									showMsg("系统故障")
+								}
+							}
+						})
+					})
 				}
 				else{
 					showMsg("系统故障")

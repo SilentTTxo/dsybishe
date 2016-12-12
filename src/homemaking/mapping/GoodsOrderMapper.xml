@@ -24,4 +24,7 @@
 	<update id="state" parameterType="GoodsOrder">
 		update GOODSORDER set STATE = #{state} where id = #{id}
 	</update>
+	<delete id="del" parameterType="Integer">
+		DELETE FROM GOODSORDER where ID = #{id}
+	</delete>
 </mapper>

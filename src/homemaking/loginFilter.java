@@ -14,6 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,11 +37,22 @@ public class loginFilter implements Filter {
               
             //如果没有登录.  
             String requestURI = req.getRequestURI().substring(req.getRequestURI().indexOf("/",1),req.getRequestURI().length());  
-            String[] allowUrl = {"/api/user/regist","/api/user/login","/servlet/AuthImageServlet","/api/goods/searchByType","/api/goods/getType","/api/goods/getAll","/api/goods/searchByName"};
+            String[] allowUrl = {
+            		"/api/user/regist",
+            		"/api/user/login",
+            		"/servlet/AuthImageServlet",
+            		"/api/goods/searchByType",
+            		"/api/goods/getType",
+            		"/api/goods/getAll",
+            		"/api/goods/searchByName",
+            		"/login",
+            		"/api/notice/getAll",
+            		"/api/ad/getAll"};
             boolean key = true;
             for (String str : allowUrl) {
 				if(str.equals(requestURI)) key=false;
 			}
+            if(requestURI.contains("media")) key = false;
             //如果第一次请求不为登录页面,则进行检查用session内容,如果为登录页面就不去检查.  
             if(key)  
             {  
@@ -50,6 +62,10 @@ public class loginFilter implements Filter {
                 //如果session中没有任何东西.  
                 if(session == null ||session.getAttribute("userid")==null)  
                 {  
+                	if(requestURI.contains("admin")){
+                		res.sendRedirect("/homemaking/login");
+                		return;
+                	}
                 	res.setCharacterEncoding("UTF-8");
                 	res.setContentType("application/json; charset=utf-8");
                 	try {

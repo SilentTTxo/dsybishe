@@ -26,4 +26,8 @@
 	<select id="searchByType" parameterType="String" resultType="Goods">
 		select * from GOODS where goodstype like #{type}
 	</select>
+	
+	<delete id="del" parameterType="Integer">
+		DELETE FROM GOODS where ID = #{id}
+	</delete>
 </mapper>
