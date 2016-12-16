@@ -29,4 +29,10 @@
 	<delete id="del" parameterType="Integer">
 		DELETE FROM USER where ID = #{id}
 	</delete>
+	<update id="fixPassword" parameterType="User">
+		update USER set PASSWORD = #{password} where id = #{id}
+	</update>
+	<update id="fixMoney" parameterType="User">
+		update USER set MONEY = #{money} where id = #{id}
+	</update>
 </mapper>

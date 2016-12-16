@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.rmi.server.UID;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +31,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import homemaking.data.Goods;
 import homemaking.data.GoodsOrder;
+import homemaking.data.GoodsOrder2GoodsView;
+import homemaking.data.GoodsOrderView;
+import homemaking.data.State;
+import homemaking.data.User;
 import homemaking.mapping.GoodsMapper;
+import homemaking.mapping.GoodsOrder2GoodsViewMapper;
 import homemaking.mapping.GoodsOrderMapper;
+import homemaking.mapping.GoodsOrderViewMapper;
+import homemaking.mapping.UserMapper;
 
 @Controller
 public class GoodsOrderInterface {
@@ -39,6 +49,12 @@ public class GoodsOrderInterface {
 	private GoodsOrderMapper goodsOrderMapper;
 	@Resource
 	private GoodsMapper goodsMapper;
+	@Resource
+	private UserMapper userMapper;
+	@Resource
+	private GoodsOrderViewMapper goodsOrderViewMapper;
+	@Resource
+	private GoodsOrder2GoodsViewMapper goodsOrder2GoodsViewMapper;
 	
 	JSONObject ans = null;
 	
@@ -46,22 +62,63 @@ public class GoodsOrderInterface {
 	@RequestMapping(value="api/goodsOrder/getAll",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String getAll() throws JSONException{
 		ans = new JSONObject();
-		List<GoodsOrder> ga = goodsOrderMapper.findAll();
+		List<GoodsOrderView> ga = goodsOrderViewMapper.findAll();
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
-		for(GoodsOrder i : ga){
+		for(GoodsOrderView i : ga){
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
 			temp.put("price", i.getPrice());
 			temp.put("tprice", i.getTprice());
 			temp.put("sum",i.getSum());
-			temp.put("goods",i.getGoods());
-			temp.put("uid",i.getUid());
+			temp.put("goodsname",i.getGoodsname());
+			temp.put("username",i.getUsername());
 			temp.put("state",i.getState());
+			
 			gl.put(temp);
 		}
 		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/getById",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getById(int id) throws JSONException{
+		ans = new JSONObject();
+		GoodsOrder ga = goodsOrderMapper.findById(id);
+		if(ga==null){
+			ans.put("code",0);
+			ans.put("msg","no such a order");
+			return ans.toString();
+		}
+		ans.put("code",1);
+
+			JSONObject temp = new JSONObject();
+			ans.put("order_id",ga.getId());
+			ans.put("order_ordertype",ga.getOrdertype());
+			ans.put("order_price", ga.getPrice());
+			ans.put("order_tprice", ga.getTprice());
+			ans.put("order_sum",ga.getSum());
+			ans.put("order_goods",ga.getGoods());
+			ans.put("order_uid",ga.getUid());
+			ans.put("order_state",ga.getState());
+			
+			Goods i = goodsMapper.findById(ga.getGoods());
+			ans.put("goods_name",i.getName());
+			ans.put("goods_goodstype",i.getGoodstype());
+			ans.put("goods_address",i.getAddress());
+			ans.put("goods_sex",i.getSex());
+			ans.put("goods_age",i.getAge());
+			ans.put("goods_img",i.getImg());
+			ans.put("goods_des",i.getDes());
+			ans.put("goods_tel",i.getTel());
+			
+			User y = userMapper.findById(ga.getUid());
+			ans.put("user_img",y.getImg()==null?"":y.getImg());
+			ans.put("user_username",y.getUsername());
+			ans.put("user_money",y.getMoney());
+			
 		return ans.toString();
 	}
 	
@@ -70,10 +127,10 @@ public class GoodsOrderInterface {
 	public String getUserOrder(HttpSession session) throws JSONException{
 		ans = new JSONObject();
 		int uid = Integer.parseInt(session.getAttribute("userid").toString());
-		List<GoodsOrder> ga = goodsOrderMapper.findByUser(uid);
+		List<GoodsOrder2GoodsView> ga = goodsOrder2GoodsViewMapper.findByUser(uid);
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
-		for(GoodsOrder i : ga){
+		for(GoodsOrder2GoodsView i : ga){
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
@@ -83,6 +140,42 @@ public class GoodsOrderInterface {
 			temp.put("uid",i.getUid());
 			temp.put("state",i.getState());
 			temp.put("tprice", i.getTprice());
+			temp.put("goodsname", i.getGoodsname());
+			temp.put("goodsphone", i.getPrice());
+			temp.put("goodsimg", i.getTprice());
+			
+			gl.put(temp);
+		}
+		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/getUserOrderByState",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getUserOrderByType(int state,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		int uid = Integer.parseInt(session.getAttribute("userid").toString());
+		List<GoodsOrder> ga = goodsOrderMapper.findByUser(uid);
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		for(GoodsOrder i : ga){
+			if(i.getState() != state) continue;
+			JSONObject temp = new JSONObject();
+			temp.put("id",i.getId());
+			temp.put("ordertype",i.getOrdertype());
+			temp.put("price", i.getPrice());
+			temp.put("sumprice",i.getSum());
+			temp.put("goods",i.getGoods());
+			temp.put("uid",i.getUid());
+			temp.put("state",i.getState());
+			temp.put("tprice", i.getTprice());
+			
+			Goods gd = goodsMapper.findById(i.getGoods());
+			temp.put("goodsname", gd.getName());
+			temp.put("goodsimg", gd.getImg());
+			temp.put("goodsphone", gd.getTel());
+			
+			
 			gl.put(temp);
 		}
 		ans.put("goods", gl);
@@ -120,16 +213,30 @@ public class GoodsOrderInterface {
 	
 	@ResponseBody
 	@RequestMapping(value="api/goodsOrder/state",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String state(int id,int state) throws JSONException{
+	public String state(int id,String state) throws JSONException{
 		ans = new JSONObject();
+		int data=0;
+		if(isNumeric(state)) data = Integer.parseInt(state);
+		else{
+			String[] str = {"confirm","ready","haspay1","haspay2","hasdone","del","invalid"};
+			for(int i=-2;i<5;i++){
+				int y=0;
+				if(str[i].equals(state)){
+					if(i==-2) y=6;
+					else if(i==-1) y=5;
+					else y=i;
+					data = y;
+				}
+			}
+		}
 		GoodsOrder goods = goodsOrderMapper.findById(id);
-		goods.setState(state);
+		goods.setState(data);
 		goodsOrderMapper.state(goods);
 		
 		ans.put("code",1);
 		return ans.toString();
 	}
-	
+	/*
 	@ResponseBody
 	@RequestMapping(value="api/goodsOrder/check",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String check(int id) throws JSONException{
@@ -145,20 +252,34 @@ public class GoodsOrderInterface {
 		
 		ans.put("code",1);
 		return ans.toString();
-	}
+	}*/
 	
 	@ResponseBody
 	@RequestMapping(value="api/goodsOrder/pay",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String pay(int id) throws JSONException{
+	public String pay(int id,String payPassword,HttpSession session) throws JSONException{
 		ans = new JSONObject();
+		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
 		GoodsOrder goods = goodsOrderMapper.findById(id);
-		if(goods.getState() != 1){
+		if(!xx.getPaypassword().equals(payPassword)){
+			ans.put("code",0);
+			ans.put("msg","支付密码错误");
+			return ans.toString();
+		}
+		if(xx.getMoney() < goods.getTprice()){
+			ans.put("code",0);
+			ans.put("msg","余额不足");
+			return ans.toString();
+		}
+		
+		if(goods.getState() != 0){
 			ans.put("code",0);
 			ans.put("msg","该订单并非等待支付状态");
 			return ans.toString();
 		}
-		goods.setState(goods.getState()+1);
+		goods.setState(goods.getState()+2);
 		goodsOrderMapper.state(goods);
+		xx.setMoney(xx.getMoney() - goods.getTprice());
+		userMapper.fixMoney(xx);
 		
 		ans.put("code",1);
 		return ans.toString();
@@ -204,23 +325,26 @@ public class GoodsOrderInterface {
 	public String getAllSum(HttpSession session) throws JSONException{
 		ans = new JSONObject();
 		int uid = Integer.parseInt(session.getAttribute("userid").toString());
-		int confirm = goodsOrderMapper.findByState(0,uid).size();
-		int ready = goodsOrderMapper.findByState(1,uid).size();
-		int haspay1 = goodsOrderMapper.findByState(2,uid).size();
-		int haspay2 = goodsOrderMapper.findByState(3,uid).size();
-		int hasdone = goodsOrderMapper.findByState(4,uid).size();
-		int del = goodsOrderMapper.findByState(-1,uid).size();
-		int invalid = goodsOrderMapper.findByState(-2,uid).size();
-		
-		
+		List<State> data = goodsOrderMapper.findByStateCount(uid);
 		ans.put("code",1);
-		ans.put("confirm",confirm);
-		ans.put("ready",ready);
-		ans.put("haspay1",haspay1);
-		ans.put("haspay2",haspay2);
-		ans.put("hasdone",hasdone);
-		ans.put("del",del);
-		ans.put("invalid",invalid);
+		String[] str = {"confirm","ready","haspay1","haspay2","hasdone","del","invalid"};
+		for (State i : data){
+			int ss = i.getState();
+			if(ss == -1 ){
+				ss +=6;
+			}
+			if(ss == -2){
+				ss +=8;
+			}
+			ans.put(str[ss]+"",i.getSum());
+		}
+		for(int i=0;i<7;i++){
+			if(i == 1) continue;
+			if(!ans.has(str[i])){
+				ans.put(str[i], 0);
+			}
+		}
+		
 		return ans.toString();
 	}
 	@ResponseBody
@@ -232,4 +356,12 @@ public class GoodsOrderInterface {
 		ans.put("code",1);
 		return ans.toString();
 	}
+	public boolean isNumeric(String str){ 
+		   Pattern pattern = Pattern.compile("^-?[0-9]+"); 
+		   Matcher isNum = pattern.matcher(str);
+		   if( !isNum.matches() ){
+		       return false; 
+		   } 
+		   return true; 
+		}
 }

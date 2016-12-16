@@ -67,6 +67,11 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
 
+	<link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css" />
+	<link href="media/css/search.css" rel="stylesheet" type="text/css"/>
+
+
+
 	<!-- END PAGE LEVEL STYLES -->
 
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
@@ -173,7 +178,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="start ">
+				<li class="start">
 
 					<a href="admin.html">
 
@@ -187,7 +192,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li>
+				<li class="">
 
 					<a href="javascript:;">
 
@@ -201,7 +206,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<ul class="sub-menu">
 
-						<li >
+						<li>
 
 							<a href="admin_user_add.html">
 
@@ -209,7 +214,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li>
+						<li >
 
 							<a href="admin_user_power.html">
 
@@ -229,7 +234,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="active">
+				<li>
 
 					<a href="javascript:;">
 
@@ -243,7 +248,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<ul class="sub-menu">
 
-						<li >
+						<li>
 
 							<a href="admin_goods_add.html">
 
@@ -251,7 +256,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li>
+						<li >
 
 							<a href="admin_goods_list.html">
 
@@ -266,14 +271,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							新增套餐</a>
 
 						</li>
-						<li class="active"><a href="admin_goods_setIsSell.html">上架商品</a></li>
+						<li><a href="admin_goods_setIsSell.html">上架商品</a></li>
 
 
 					</ul>
 
 				</li>
 
-				<li class="">
+				<li class="active">
 
 					<a href="javascript:;">
 
@@ -287,7 +292,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<ul class="sub-menu">
 
-						<li >
+						<li>
 
 							<a href="admin_order_list.html">
 
@@ -295,7 +300,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li >
+						<li>
 
 							<a href="admin_order_add.html">
 
@@ -303,7 +308,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
-						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
+						<li class="active"><a href="admin_order_serch.html">按订单号查询</a></li>
 
 					</ul>
 
@@ -447,9 +452,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 							</li>
 
-							<li><a href="#">商品管理</a><i class="icon-angle-right"></i></li>
+							<li><a href="#">订单管理</a><i class="icon-angle-right"></i></li>
 
-							<li><a href="#">商品列表</a></li>
+							<li><a href="#">新增订单</a></li>
 
 							<li class="pull-right no-text-shadow">
 
@@ -474,69 +479,462 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</div>
 
 				<!-- END PAGE HEADER-->
-				
-				<div class="portlet box green">
+				<div class="row-fluid search-forms search-default">
 
-							<div class="portlet-title">
+					<form class="form-search" action="#">
 
-								<div class="caption"><i class="icon-cogs"></i>商品列表</div>
+						<div class="chat-form">
 
-								<div class="tools">
+							<div class="input-cont">   
 
-									<a href="javascript:;" class="collapse"></a>
-
-									<a href="#portlet-config" data-toggle="modal" class="config"></a>
-
-									<a href="javascript:;" class="reload"></a>
-
-									<a href="javascript:;" class="remove"></a>
-
-								</div>
+								<input type="text" placeholder="输入订单号" class="m-wrap" id="ipt">
 
 							</div>
 
-							<div class="portlet-body">
-
-								<table class="table table-hover">
-
-									<thead>
-
-										<tr>
-
-											<th>ID</th>
-
-											<th>价格</th>
-
-											<th>商品种类</th>
-
-											<th>地址</th>
-
-											<th>性别</th>
-
-											<th>年龄</th>
-											
-											<th>电话</th>
-
-											<th>描述</th>
-
-											<th>上架</th>
-
-											<th>图片</th>
-										</tr>
-
-									</thead>
-
-									<tbody>
-										<!-- data -->
-										
-
-									</tbody>
-
-								</table>
-
-							</div>
+							<button type="button" class="btn green" id="search_btn">查询 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
 
 						</div>
+
+					</form>
+
+				</div>
+
+				<div class="portlet box blue">
+
+										<div class="portlet-title">
+
+											<div class="caption"><i class="icon-reorder"></i>订单详情</div>
+
+											<div class="tools">
+
+												<a href="javascript:;" class="collapse"></a>
+
+												<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+												<a href="javascript:;" class="reload"></a>
+
+												<a href="javascript:;" class="remove"></a>
+
+											</div>
+
+										</div>
+
+										<div class="portlet-body form">
+
+											<!-- BEGIN FORM-->
+
+											<div class="form-horizontal form-view">
+
+												<h3 class="form-section">订单信息</h3>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label" for="firstName">ID:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_id"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label" for="lastName">订单类型:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_ordertype"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<!--/row-->
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">单价:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_price"></span> 
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">商品数量:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_sum"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<!--/row-->        
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">商品ID:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_goods"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">用户ID:</label>
+
+															<div class="controls">                                                
+
+																<span class="text" id="order_uid"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">状态:</label>
+
+															<div class="controls">
+
+																<span class="text" id="order_state"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">总价:</label>
+
+															<div class="controls">                                                
+
+																<span class="text" id="order_tprice"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<!--/row-->                
+
+												<h3 class="form-section">商品信息</h3>
+
+												<div class="row-fluid">
+
+													<div class="span12 ">
+
+														<div class="control-group">
+
+															<label class="control-label">名称:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_name"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+												</div>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">描述:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_des"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6">
+
+														<div class="control-group">
+
+															<label class="control-label">商品类型:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_goodstype"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<!--/row-->           
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">地址:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_address"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">性别:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_sex"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">年龄:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_age"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">电话:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_tel"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">头像:</label>
+
+															<div class="controls">
+
+																<span class="text" id="goods_img"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<h3 class="form-section">用户信息</h3>
+
+												<div class="row-fluid">
+
+													<div class="span12 ">
+
+														<div class="control-group">
+
+															<label class="control-label">用户名:</label>
+
+															<div class="controls">
+
+																<span class="text" id="user_username"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+												</div>
+
+												<div class="row-fluid">
+
+													<div class="span6 ">
+
+														<div class="control-group">
+
+															<label class="control-label">余额:</label>
+
+															<div class="controls">
+
+																<span class="text" id="user_money"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+													<div class="span6">
+
+														<div class="control-group">
+
+															<label class="control-label">头像:</label>
+
+															<div class="controls">
+
+																<span class="text" id="user_img"></span>
+
+															</div>
+
+														</div>
+
+													</div>
+
+													<!--/span-->
+
+												</div>
+
+												<div class="form-actions">
+
+
+													<button type="button" class="btn">Back</button>
+
+												</div>
+
+											</div>
+
+											<!-- END FORM-->  
+
+										</div>
+
+									</div>
 
 			</div>
 
@@ -640,6 +1038,12 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<script src="media/js/jquery.sparkline.min.js" type="text/javascript"></script>  
 
+	<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
+
+	<script type="text/javascript" src="media/js/ajaxfileupload.js"></script>
+
+
+
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -651,7 +1055,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- END PAGE LEVEL SCRIPTS -->  
 
 	<script>
-	String.prototype.format = function(args) {
+		String.prototype.format = function(args) {
     var result = this;
     if (arguments.length > 0) {    
         if (arguments.length == 1 && typeof (args) == "object") {
@@ -674,7 +1078,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     }
     return result;
 }
-	showMsg = function(data){
+		showMsg = function(data){
 			$.gritter.add({
 				title: "提示",
 				text: data,
@@ -682,53 +1086,71 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				time: '2000'
 			});
 		}
-	flush = function(){
-		$.ajax({
-			type:"GET",
-			url:"./api/goods/getAll",
-			success : function(result){
-				result = jQuery.parseJSON(result);
-				if(result['code'] == "1"){
-					showMsg("刷新成功");
-					goods = result['goods'];
-					for(i in goods){
-						isSell = goods[i].isSell;
-						goods[i].isSell = '<td><select class="small m-wrap" tabindex="1" class="isSell" id="s{id}" dataid="{id}"><option value="1">在架</option><option value="0">下架</option></select></td>'.format(goods[i])
-						$("tbody").append('<tr><td>{id}</td><td>{price}</td><td>{goodstype}</td><td>{address}</td><td>{sex}</td><td>{age}</td><td>{tel}</td><td>{des}</td>{isSell}<td>{img}</td></tr>'.format(goods[i]));
-						$("#s{id}".format(goods[i])).val(isSell);
-						$("#s{id}".format(goods[i])).change(function(){
-							g={}
-							g.id = $(this).attr("dataid");
-							g.isSell = $(this).val();
-							$.ajax({
-								type:"GET",
-								url:"./api/goods/isSell?id={id}&isSell={isSell}".format(g),
-								success : function(result){
-									showMsg("修改成功");
-								}
-							})
-						})
-					}
-				}
-				else{
-					showMsg("系统故障")
-				}
-			}
-		})
-	}
+		indata = function(data){
+			$("#order_id").html(data.order_id);
+			$("#order_goods").html(data.order_goods);
+			$("#order_ordertype").html(data.order_ordertype);
+			$("#order_price").html(data.order_price);
+			$("#order_state").html(data.order_state);
+			$("#order_sum").html(data.order_sum);
+			$("#order_tprice").html(data.order_tprice);
+			$("#order_uid").html(data.order_uid);
+
+			$("#goods_address").html(data.goods_address);
+			$("#goods_age").html(data.goods_age);
+			$("#goods_des").html(data.goods_des);
+			$("#goods_goodstype").html(data.goods_goodstype);
+			$("#goods_img").html(data.goods_img);
+			$("#goods_name").html(data.goods_name);
+			$("#goods_sex").html(data.goods_sex);
+			$("#goods_tel").html(data.goods_tel);
+
+			$("#user_img").html(data.user_img);
+			$("#user_money").html(data.user_money);
+			$("#user_username").html(data.user_username);
+		}
 		jQuery(document).ready(function() {    
 
 		   App.init(); // initlayout and core plugins
 
-		   flush();
+		   //Index.initIntro();
 
-		   $(".reload").click(function(){
-		   		$("tbody").empty();
-		   		flush();
+		   $("#up").click(function(){
+		   	data = {}
+		   	data.ordertype = $("#ordertype").val();
+		   	data.sum = $("#sum").val();
+		   	data.goods = $("#goods").val();
+		   	data.uid = $("#uid").val();
+		   	$.ajax({
+		   		type:"GET",
+		   		url:"./api/goodsOrder/add?orderType={ordertype}&sum={sum}&goods={goods}&uid={uid}".format(data),
+		   		success : function(result){
+		   			result = jQuery.parseJSON(result);
+		   			if(result['code'] == "1"){
+		   				showMsg("添加成功")
+		   			}
+		   			else{
+		   				showMsg("已有同名用户")
+		   			}
+		   		}
+		   	})
+		   });
+		   $("#search_btn").click(function(){
+		   	$.ajax({
+		   		type:"GET",
+		   		url:"./api/goodsOrder/getById?id="+$("#ipt").val(),
+		   		success : function(result){
+		   			result = jQuery.parseJSON(result);
+		   			if(result['code'] == "1"){
+		   				indata(result);
+		   			}
+		   			else{
+		   				showMsg("无此id订单");
+		   			}
+		   		}
+		   	})
 		   })
-
-
-		});
+		})
 	</script>
 
 	<!-- END JAVASCRIPTS -->

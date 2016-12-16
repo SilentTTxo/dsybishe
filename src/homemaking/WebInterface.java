@@ -166,6 +166,17 @@ public class WebInterface {
         return modelAndView;
     }
 	
+	@RequestMapping(value="admin_order_serch",method=RequestMethod.GET)
+	public ModelAndView order_serch(HttpSession session){ 
+		ModelAndView modelAndView = new ModelAndView();    
+		if(session.getAttribute("power").toString() != "0"){
+			modelAndView.setViewName("login");
+			return modelAndView;
+		}
+        modelAndView.setViewName("admin_order_serch");  
+        return modelAndView;
+    }
+	
 	@RequestMapping(value="admin_ad_add",method=RequestMethod.GET)
 	public ModelAndView ad_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    

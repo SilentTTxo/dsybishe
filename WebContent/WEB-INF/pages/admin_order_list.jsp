@@ -27,7 +27,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<meta charset="utf-8" />
 
-	<title>懒人家政管理后台</title>
+	<title>今天麻麻不在家管理后台</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -303,6 +303,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
+						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
 
 					</ul>
 
@@ -510,9 +511,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 											<th>商品数量</th>
 
-											<th>商品ID</th>
+											<th>商品</th>
 
-											<th>用户ID</th>
+											<th>用户</th>
 
 											<th>订单状态</th>
 											
@@ -712,7 +713,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						if(goodsorder[i].ordertype == undefined){
 							goodsorder[i].ordertype = "";
 						}
-						$("tbody").append('<tr><td>{id}</td><td>{ordertype}</td><td>{price}</td><td>{sum}</td><td>{goods}</td><td>{uid}</td>{state}<td>{tprice}</td></tr>'.format(goodsorder[i]));
+						$("tbody").append('<tr><td>{id}</td><td>{ordertype}</td><td>{price}</td><td>{sum}</td><td>{goodsname}</td><td>{username}</td>{state}<td>{tprice}</td></tr>'.format(goodsorder[i]));
 					}
 				}
 				else{

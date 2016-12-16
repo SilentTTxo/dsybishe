@@ -45,7 +45,34 @@ public class GoodsInterface {
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
 		for(Goods i : ga){
-			if(i.getGoodstype().equals("套餐")) continue;
+			if(i.getGoodstype().equals("套餐") || i.getIsSell() == 0) continue;
+			JSONObject temp = new JSONObject();
+			temp.put("id",i.getId());
+			temp.put("name",i.getName());
+			temp.put("price", i.getPrice());
+			temp.put("isSell",i.getIsSell());
+			temp.put("goodstype",i.getGoodstype());
+			temp.put("address",i.getAddress());
+			temp.put("sex",i.getSex());
+			temp.put("age",i.getAge());
+			temp.put("img",i.getImg());
+			temp.put("des",i.getDes());
+			temp.put("tel",i.getTel());
+			gl.put(temp);
+		}
+		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goods/getAllByType",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getAllByType(String type) throws JSONException{
+		ans = new JSONObject();
+		List<Goods> ga = goodsMapper.findAll();
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		for(Goods i : ga){
+			if(i.getGoodstype().equals("套餐") || i.getIsSell() == 0 || !i.getGoodstype().equals(type)) continue;
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
 			temp.put("name",i.getName());

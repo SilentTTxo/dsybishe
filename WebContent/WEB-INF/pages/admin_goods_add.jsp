@@ -27,7 +27,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<meta charset="utf-8" />
 
-	<title>懒人家政管理后台</title>
+	<title>今天麻麻不在家管理后台</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="homemaking.mapping.GoodsOrder2GoodsViewMapper">
+	<select id="findAll" resultType="GoodsOrder2GoodsView">
+		select * from GOODSORDER2GOOODS
+	</select>
+	
+	<select id="findById" parameterType="int" resultType="GoodsOrder2GoodsView">
+		select * from GOODSORDER2GOOODS where ID = {id}
+	</select>
+	<select id="findByUser" resultType="GoodsOrder2GoodsView" parameterType="int">
+		select * from GOODSORDER2GOOODS where uid = #{uid}
+	</select>
+</mapper>

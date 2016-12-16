@@ -5,7 +5,7 @@ public class User {
 	private String username;
 	private String password;
 	private int power;
-	private int money;
+	private double money;
 	private String img;
 	private String paypassword;
 	public int getId() {
@@ -26,10 +26,10 @@ public class User {
 	public void setPower(int power) {
 		this.power = power;
 	}
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 	public String getImg() {

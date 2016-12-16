@@ -131,12 +131,32 @@ public class UserInterface {
 	
 	@ResponseBody
 	@RequestMapping(value="api/user/fixPaypassword",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-	public String fixPaypassword(String oldpassword,String paypassword,HttpSession session) throws JSONException{
+	public String fixPaypassword(String loginpassword,String password,HttpSession session) throws JSONException{
 		ans = new JSONObject();
 		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
-		if(xx.getPaypassword().equals(oldpassword)){
-			xx.setPaypassword(paypassword);
+		if(xx.getPassword().equals(loginpassword)){
+			xx.setPaypassword(password);
 			userMapper.fixPaypassword(xx);
+			
+			ans.put("code", 1);
+			ans.put("msg", "修改成功");
+		}
+		else {
+			ans.put("code", 0);
+			ans.put("msg", "修改失败，密码错误");
+		}
+		
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/user/fixPassword",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String fixPassword(String loginpassword,String password,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User xx = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
+		if(xx.getPassword().equals(loginpassword)){
+			xx.setPassword(password);
+			userMapper.fixPassword(xx);
 			
 			ans.put("code", 1);
 			ans.put("msg", "修改成功");

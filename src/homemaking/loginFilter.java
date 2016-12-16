@@ -53,6 +53,7 @@ public class loginFilter implements Filter {
 				if(str.equals(requestURI)) key=false;
 			}
             if(requestURI.contains("media")) key = false;
+            if(requestURI.contains("upload")) key = false;
             //如果第一次请求不为登录页面,则进行检查用session内容,如果为登录页面就不去检查.  
             if(key)  
             {  

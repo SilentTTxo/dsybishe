@@ -4,6 +4,7 @@ import java.util.List;
 
 import homemaking.data.Goods;
 import homemaking.data.GoodsOrder;
+import homemaking.data.State;
 
 public interface GoodsOrderMapper {
 	
@@ -13,5 +14,6 @@ public interface GoodsOrderMapper {
 	List<GoodsOrder> findByState(int state,int uid);
 	int add(GoodsOrder goodsOrder);
 	void state(GoodsOrder goodsOrder);
+	List<State> findByStateCount(int uid);
 	void del(int id);
 }

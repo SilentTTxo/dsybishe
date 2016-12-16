@@ -13,7 +13,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <!-- BEGIN HEAD -->
 <head>
 	<meta charset="utf-8" />
-	<title>懒人家政管理后台</title>
+	<title>今天麻麻不在家管理后台</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -152,6 +152,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 							新增订单</a>
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
+						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
 					</ul>
 				</li>
 				<li class="">
