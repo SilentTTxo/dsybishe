@@ -143,6 +143,7 @@ public class GoodsOrderInterface {
 			temp.put("goodsname", i.getGoodsname());
 			temp.put("goodsphone", i.getPrice());
 			temp.put("goodsimg", i.getTprice());
+			temp.put("goodstype", i.getGoodstype());
 			
 			gl.put(temp);
 		}
@@ -155,10 +156,10 @@ public class GoodsOrderInterface {
 	public String getUserOrderByType(int state,HttpSession session) throws JSONException{
 		ans = new JSONObject();
 		int uid = Integer.parseInt(session.getAttribute("userid").toString());
-		List<GoodsOrder> ga = goodsOrderMapper.findByUser(uid);
+		List<GoodsOrder2GoodsView> ga = goodsOrder2GoodsViewMapper.findByUser(uid);
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
-		for(GoodsOrder i : ga){
+		for(GoodsOrder2GoodsView i : ga){
 			if(i.getState() != state) continue;
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
@@ -169,11 +170,10 @@ public class GoodsOrderInterface {
 			temp.put("uid",i.getUid());
 			temp.put("state",i.getState());
 			temp.put("tprice", i.getTprice());
-			
-			Goods gd = goodsMapper.findById(i.getGoods());
-			temp.put("goodsname", gd.getName());
-			temp.put("goodsimg", gd.getImg());
-			temp.put("goodsphone", gd.getTel());
+			temp.put("goodsname", i.getGoodsname());
+			temp.put("goodsphone", i.getPrice());
+			temp.put("goodsimg", i.getTprice());
+			temp.put("goodstype", i.getGoodstype());
 			
 			
 			gl.put(temp);

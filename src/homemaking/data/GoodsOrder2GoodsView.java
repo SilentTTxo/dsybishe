@@ -12,6 +12,7 @@ public class GoodsOrder2GoodsView {
 	private String goodsname;
 	private String goodsphone;
 	private String goodsimg;
+	private String goodstype;
 	public int getId() {
 		return id;
 	}
@@ -77,6 +78,12 @@ public class GoodsOrder2GoodsView {
 	}
 	public void setGoodsimg(String goodsimg) {
 		this.goodsimg = goodsimg;
+	}
+	public String getGoodstype() {
+		return goodstype;
+	}
+	public void setGoodstype(String goodstype) {
+		this.goodstype = goodstype;
 	}
 	
 }
