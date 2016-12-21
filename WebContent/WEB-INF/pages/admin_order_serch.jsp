@@ -309,6 +309,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
 						<li class="active"><a href="admin_order_serch.html">按订单号查询</a></li>
+						<li ><a href="admin_order_pay.html">充值订单</a></li>
 
 					</ul>
 
@@ -480,23 +481,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				<!-- END PAGE HEADER-->
 				<div class="row-fluid search-forms search-default">
-
 					<form class="form-search" action="#">
-
 						<div class="chat-form">
-
 							<div class="input-cont">   
-
 								<input type="text" placeholder="输入订单号" class="m-wrap" id="ipt">
-
 							</div>
-
 							<button type="button" class="btn green" id="search_btn">查询 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
-
 						</div>
-
 					</form>
-
 				</div>
 
 				<div class="portlet box blue">

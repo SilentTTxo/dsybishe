@@ -58,6 +58,17 @@ public class GoodsOrderInterface {
 	
 	JSONObject ans = null;
 	
+	private String stateInt2Str(int state){
+		String temp = "";
+		if(state == -1) temp =  "del";
+		if(state == -2) temp =  "invalid";
+		if(state == 0) temp =  "confirm";
+		if(state == 1) temp =  "ready";
+		if(state == 2) temp =  "haspay1";
+		if(state == 3) temp =  "haspay2";
+		if(state == 4) temp =  "hasdone";
+		return temp;
+	}
 	@ResponseBody
 	@RequestMapping(value="api/goodsOrder/getAll",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
 	public String getAll() throws JSONException{
@@ -66,6 +77,31 @@ public class GoodsOrderInterface {
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
 		for(GoodsOrderView i : ga){
+			JSONObject temp = new JSONObject();
+			temp.put("id",i.getId());
+			temp.put("ordertype",i.getOrdertype());
+			temp.put("price", i.getPrice());
+			temp.put("tprice", i.getTprice());
+			temp.put("sum",i.getSum());
+			temp.put("goodsname",i.getGoodsname());
+			temp.put("username",i.getUsername());
+			temp.put("state",i.getState());
+			
+			gl.put(temp);
+		}
+		ans.put("goods", gl);
+		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/goodsOrder/getPayAll",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String getPayAll() throws JSONException{
+		ans = new JSONObject();
+		List<GoodsOrderView> ga = goodsOrderViewMapper.findAll();
+		ans.put("code",1);
+		JSONArray gl = new JSONArray();
+		for(GoodsOrderView i : ga){
+			if(!i.getOrdertype().equals("充钱")) continue;
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
@@ -131,6 +167,7 @@ public class GoodsOrderInterface {
 		ans.put("code",1);
 		JSONArray gl = new JSONArray();
 		for(GoodsOrder2GoodsView i : ga){
+			if(i.getGoods() == 1) continue;
 			JSONObject temp = new JSONObject();
 			temp.put("id",i.getId());
 			temp.put("ordertype",i.getOrdertype());
@@ -138,11 +175,11 @@ public class GoodsOrderInterface {
 			temp.put("sumprice",i.getSum());
 			temp.put("goods",i.getGoods());
 			temp.put("uid",i.getUid());
-			temp.put("state",i.getState());
+			temp.put("state",stateInt2Str(i.getState()));
 			temp.put("tprice", i.getTprice());
 			temp.put("goodsname", i.getGoodsname());
 			temp.put("goodsphone", i.getPrice());
-			temp.put("goodsimg", i.getTprice());
+			temp.put("goodsimg", i.getGoodsimg());
 			temp.put("goodstype", i.getGoodstype());
 			
 			gl.put(temp);
@@ -168,11 +205,11 @@ public class GoodsOrderInterface {
 			temp.put("sumprice",i.getSum());
 			temp.put("goods",i.getGoods());
 			temp.put("uid",i.getUid());
-			temp.put("state",i.getState());
+			temp.put("state",stateInt2Str(i.getState()));
 			temp.put("tprice", i.getTprice());
 			temp.put("goodsname", i.getGoodsname());
 			temp.put("goodsphone", i.getPrice());
-			temp.put("goodsimg", i.getTprice());
+			temp.put("goodsimg", i.getGoodsimg());
 			temp.put("goodstype", i.getGoodstype());
 			
 			
@@ -313,7 +350,7 @@ public class GoodsOrderInterface {
 			ans.put("msg","该订单已经完成");
 			return ans.toString();
 		}
-		goods.setState(goods.getState()+1);
+		goods.setState(-1);
 		goodsOrderMapper.state(goods);
 		
 		ans.put("code",1);

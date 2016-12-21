@@ -306,6 +306,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
 						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
+						<li ><a href="admin_order_pay.html">充值订单</a></li>
 
 					</ul>
 

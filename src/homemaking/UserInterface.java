@@ -27,14 +27,21 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
+
 import homemaking.data.Goods;
+import homemaking.data.GoodsOrder;
 import homemaking.data.User;
+import homemaking.mapping.GoodsOrderMapper;
+import homemaking.mapping.GoodsOrderViewMapper;
 import homemaking.mapping.UserMapper;
 
 @Controller
 public class UserInterface {
 	@Resource
 	private UserMapper userMapper;
+	@Resource
+	private GoodsOrderMapper goodsOrderMapper;
 	
 	JSONObject ans = null;
 	
@@ -234,7 +241,7 @@ public class UserInterface {
 			ans.put("username",ga.getUsername());
 			ans.put("img",ga.getImg());
 			ans.put("money",ga.getMoney());
-			ans.put("isSetPay", ga.getPaypassword().isEmpty());
+			ans.put("isSetPay", !ga.getPaypassword().isEmpty());
 			
 		return ans.toString();
 	}
@@ -247,5 +254,31 @@ public class UserInterface {
 		
 		ans.put("code",1);
 		return ans.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="api/user/addMoney",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
+	public String addMoney(double money,String payId,HttpSession session) throws JSONException{
+		ans = new JSONObject();
+		User ga = userMapper.findById(Integer.parseInt(session.getAttribute("userid").toString()));
+		
+		if(!checkPayId(payId)){
+			ans.put("code", 0);
+			ans.put("msg", "无效的充值订单");
+		}
+		
+		int uid = Integer.parseInt(session.getAttribute("userid").toString());
+		double tprice = money;
+		GoodsOrder goodsOrder = new GoodsOrder("充钱", money, 1, 1,uid,tprice);
+		goodsOrderMapper.add(goodsOrder);
+		
+		ans.put("code", 1);
+		ga.setMoney(ga.getMoney()+money);
+		ans.put("money", ga.getMoney());
+		userMapper.fixMoney(ga);
+		return ans.toString();
+	}
+	private boolean checkPayId(String payId){
+		return true;
 	}
 }

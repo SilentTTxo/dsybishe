@@ -304,6 +304,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						</li>
 						<li class="active"><a href="admin_order_state.html">订单状态管理</a></li>
 						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
+						<li ><a href="admin_order_pay.html">充值订单</a></li>
 
 					</ul>
 
@@ -693,7 +694,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						
 					for(i in goodsorder){
 						state = goodsorder[i].state;
-						goodsorder[i].state = '<td><select class="small m-wrap" tabindex="1" class="state" id="s{id}" dataid="{id}"><option value="0">待确认</option><option value="1">已确认（需支付）</option><option value="2">已支付(待确认)</option><option value="3">已支付（已确认）</option><option value="4">已完成</option><option value="-1">已删除</option><option value="-2">无效订单</option></select></td>'.format(goodsorder[i])
+						goodsorder[i].state = '<td><select class="small m-wrap" tabindex="1" class="state" id="s{id}" dataid="{id}"><option value="0">待确认</option><option value="2">已支付(待确认)</option><option value="3">已支付（已确认）</option><option value="4">已完成</option><option value="-1">已删除</option><option value="-2">无效订单</option></select></td>'.format(goodsorder[i])
 						if(goodsorder[i].ordertype == undefined){
 							goodsorder[i].ordertype = "";
 						}

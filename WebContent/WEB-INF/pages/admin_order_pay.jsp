@@ -67,8 +67,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
 
-	<link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css" />
-
 	<!-- END PAGE LEVEL STYLES -->
 
 	<link rel="shortcut icon" href="media/image/favicon.ico" />
@@ -175,7 +173,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="start">
+				<li class="start ">
 
 					<a href="admin.html">
 
@@ -189,7 +187,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="">
+				<li>
 
 					<a href="javascript:;">
 
@@ -203,7 +201,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<ul class="sub-menu">
 
-						<li>
+						<li >
 
 							<a href="admin_user_add.html">
 
@@ -211,7 +209,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li >
+						<li>
 
 							<a href="admin_user_power.html">
 
@@ -231,7 +229,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="">
+				<li >
 
 					<a href="javascript:;">
 
@@ -253,7 +251,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li >
+						<li>
 
 							<a href="admin_goods_list.html">
 
@@ -275,7 +273,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="">
+				<li class="active">
 
 					<a href="javascript:;">
 
@@ -306,13 +304,13 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 						</li>
 						<li ><a href="admin_order_state.html">订单状态管理</a></li>
 						<li ><a href="admin_order_serch.html">按订单号查询</a></li>
-						<li ><a href="admin_order_pay.html">充值订单</a></li>
+						<li class="active"><a href="admin_order_pay.html">充值订单</a></li>
 
 					</ul>
 
 				</li>
 
-				<li>
+				<li class="">
 
 					<a href="javascript:;">
 
@@ -326,7 +324,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 					<ul class="sub-menu">
 
-						<li>
+						<li >
 
 							<a href="admin_ad_list.html">
 
@@ -336,7 +334,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li class="active">
+						<li >
 
 							<a href="admin_ad_add.html">
 
@@ -350,7 +348,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 				</li>
 
-				<li class="active">
+				<li class="">
 
 					<a href="javascript:;">
 
@@ -372,7 +370,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 						</li>
 
-						<li class="active">
+						<li >
 
 							<a href="admin_notice_add.html">
 
@@ -450,9 +448,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 							</li>
 
-							<li><a href="#">通知管理</a><i class="icon-angle-right"></i></li>
+							<li><a href="#">商品管理</a><i class="icon-angle-right"></i></li>
 
-							<li><a href="#">新增通知</a></li>
+							<li><a href="#">商品列表</a></li>
 
 							<li class="pull-right no-text-shadow">
 
@@ -477,103 +475,62 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				</div>
 
 				<!-- END PAGE HEADER-->
-						<div class="portlet box blue tabbable">
+				
+				<div class="portlet box green">
 
 							<div class="portlet-title">
 
-								<div class="caption">
+								<div class="caption"><i class="icon-cogs"></i>商品列表</div>
 
-									<i class="icon-reorder"></i>
+								<div class="tools">
 
-									<span class="hidden-480">输入通知信息</span>
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+									<a href="javascript:;" class="reload"></a>
+
+									<a href="javascript:;" class="remove"></a>
 
 								</div>
 
 							</div>
 
-							<div class="portlet-body form">
+							<div class="portlet-body">
 
-								<!-- BEGIN FORM-->
+								<table class="table table-hover">
 
-								<form action="./api/user/registByAdmin" class="form-horizontal" id="formd">
+									<thead>
 
-									<div class="control-group">
+										<tr>
 
-									</div>
+											<th>ID</th>
 
-									<div class="control-group">
+											<th>订单类型</th>
 
-										<label class="control-label">标题</label>
+											<th>价格</th>
 
-										<div class="controls">
+											<th>商品数量</th>
 
-											<input type="text" placeholder="title" class="m-wrap small" id="title">
+											<th>商品</th>
 
-										</div>
+											<th>用户</th>
 
-									</div>
+											<th>订单状态</th>
+											
+											<th>总价</th>
 
-									<div class="control-group">
+										</tr>
 
-										<label class="control-label">描述</label>
+									</thead>
 
-										<div class="controls">
+									<tbody>
+										<!-- data -->
+										
 
-											<input type="text" placeholder="ndescribe" class="m-wrap medium" id="ndescribe">
+									</tbody>
 
-										</div>
-
-									</div>
-
-									<div class="control-group">
-
-										<label class="control-label">类型</label>
-
-										<div class="controls">
-
-											<input type="text" placeholder="type" class="m-wrap medium" id="type">
-
-										</div>
-
-									</div>
-
-									<div class="control-group">
-
-										<label class="control-label">发布时间</label>
-
-										<div class="controls">
-
-											<input type="text" placeholder="ntime" class="m-wrap medium" id="ntime">
-
-										</div>
-
-									</div>
-
-									<div class="control-group">
-
-										<label class="control-label">链接</label>
-
-										<div class="controls">
-
-											<input type="text" placeholder="url" class="m-wrap medium" id="url">
-
-										</div>
-
-									</div>
-
-
-									<div class="form-actions">
-
-										<button type="button" class="btn blue" id="up"><i class="icon-ok"></i> Save</button>
-
-										<button type="button" class="btn">Cancel</button>
-
-									</div>
-
-								</form>
-
-								<!-- END FORM-->  
-
+								</table>
 
 							</div>
 
@@ -681,12 +638,6 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 
 	<script src="media/js/jquery.sparkline.min.js" type="text/javascript"></script>  
 
-	<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
-
-	<script type="text/javascript" src="media/js/ajaxfileupload.js"></script>
-
-
-
 	<!-- END PAGE LEVEL PLUGINS -->
 
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -698,24 +649,30 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	<!-- END PAGE LEVEL SCRIPTS -->  
 
 	<script>
-		function getNowFormatDate() {
-			var date = new Date();
-			var seperator1 = "-";
-			var seperator2 = ":";
-			var year = date.getFullYear();
-			var month = date.getMonth() + 1;
-			var strDate = date.getDate();
-			if (month >= 1 && month <= 9) {
-				month = "0" + month;
-			}
-			if (strDate >= 0 && strDate <= 9) {
-				strDate = "0" + strDate;
-			}
-			var currentdate = year + seperator1 + month + seperator1 + strDate
-			+ " " + date.getHours() + seperator2 + date.getMinutes();
-			return currentdate;
-		}
-		showMsg = function(data){
+	String.prototype.format = function(args) {
+    var result = this;
+    if (arguments.length > 0) {    
+        if (arguments.length == 1 && typeof (args) == "object") {
+            for (var key in args) {
+                if(args[key]!=undefined){
+                    var reg = new RegExp("({" + key + "})", "g");
+                    result = result.replace(reg, args[key]);
+                }
+            }
+        }
+        else {
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i] != undefined) {
+                    //var reg = new RegExp("({[" + i + "]})", "g");//这个在索引大于9时会有问题，谢谢何以笙箫的指出
+　　　　　　　　　　　　var reg= new RegExp("({)" + i + "(})", "g");
+                    result = result.replace(reg, arguments[i]);
+                }
+            }
+        }
+    }
+    return result;
+}
+	showMsg = function(data){
 			$.gritter.add({
 				title: "提示",
 				text: data,
@@ -723,61 +680,62 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 				time: '2000'
 			});
 		}
+	flush = function(){
+		$.ajax({
+			type:"GET",
+			url:"./api/goodsOrder/getPayAll",
+			success : function(result){
+				result = jQuery.parseJSON(result);
+				if(result['code'] == "1"){
+					showMsg("刷新成功");
+					goodsorder = result['goods'];
+					for(i in goodsorder){
+						if(goodsorder[i].state == 0){
+							goodsorder[i].state = '<td><span class="label label-success">待确认</span></td>'
+						}
+						if(goodsorder[i].state == 1){
+							goodsorder[i].state = '<td><span class="label label-success" style="background:#f56363;">已确认（未支付）</span></td>'
+						}
+						if(goodsorder[i].state == 2){
+							goodsorder[i].state = '<td><span class="label label-info">已支付（待确认）</span></td>'
+						}
+						if(goodsorder[i].state == 3){
+							goodsorder[i].state = '<td><span class="label label-info">已支付（已确认）</span></td>'
+						}
+						if(goodsorder[i].state == 4){
+							goodsorder[i].state = '<td><span class="label label-warning">已完成</span></td>'
+						}
+						if(goodsorder[i].state == -1){
+							goodsorder[i].state = '<td><span class="label label-blocked">已删除</span></td>'
+						}
+						if(goodsorder[i].state == -2){
+							goodsorder[i].state = '<td><span class="label label-blocked">无效订单</span></td>'
+						}
+						if(goodsorder[i].ordertype == undefined){
+							goodsorder[i].ordertype = "";
+						}
+						$("tbody").append('<tr><td>{id}</td><td>{ordertype}</td><td>{price}</td><td>{sum}</td><td>{goodsname}</td><td>{username}</td>{state}<td>{tprice}</td></tr>'.format(goodsorder[i]));
+					}
+				}
+				else{
+					showMsg("系统故障")
+				}
+			}
+		})
+	}
 		jQuery(document).ready(function() {    
 
 		   App.init(); // initlayout and core plugins
 
-		   //Index.initIntro();
+		   flush();
 
-		   $("#ntime").val(getNowFormatDate());
-
-		   $("#upimg").click(function(){
-		   	$.ajaxFileUpload({
-		   		url: './api/picUpload', //用于文件上传的服务器端请求地址
-                    secureuri: false, //是否需要安全协议，一般设置为false
-                    fileElementId: 'file', //文件上传域的ID
-                    dataType: 'json', //返回值类型 一般设置为json
-                    success: function (data, status)  //服务器成功响应处理函数
-                    {
-                    	$("#url").val(data.fileUrl);
-                    	showMsg("图片上传成功")
-                    	$("#imghead").attr("src", data.imgurl);
-                    	if (typeof (data.error) != 'undefined') {
-                    		if (data.error != '') {
-                    			alert(data.error);
-                    		} else {
-                    			alert(data.msg);
-                    		}
-                    	}
-                    },
-                    error: function (data, status, e)//服务器响应失败处理函数
-                    {
-                    	alert(e);
-                    }
-                })
+		   $(".reload").click(function(){
+		   		$("tbody").empty();
+		   		flush();
 		   })
 
-		   $("#up").click(function(){
-		   	title = $("#title").val();
-		   	ndescribe = $("#ndescribe").val();
-		   	url = $("#url").val();
-		   	ntime = $("#ntime").val();
-		   	type = $("#type").val();
-		   	$.ajax({
-		   		type:"GET",
-		   		url:"./api/notice/add?title="+title+"&describe="+ndescribe+"&url="+url+"&time="+ntime+"&type="+type,
-		   		success : function(result){
-		   			result = jQuery.parseJSON(result);
-		   			if(result['code'] == "1"){
-		   				showMsg("添加成功")
-		   			}
-		   			else{
-		   				showMsg("已有同名用户")
-		   			}
-		   		}
-		   	})
-		   });
-		})
+
+		});
 	</script>
 
 	<!-- END JAVASCRIPTS -->
