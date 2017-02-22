@@ -64,6 +64,7 @@ public class loginFilter implements Filter {
                 if(session == null ||session.getAttribute("userid")==null)  
                 {  
                 	if(requestURI.contains("admin")){
+                		
                 		res.sendRedirect("/homemaking/login");
                 		return;
                 	}
@@ -80,7 +81,14 @@ public class loginFilter implements Filter {
                 	out.write(ans.toString());  
                     //返回  
                     return;  
-                }  
+                }
+                else {
+                	if(requestURI.contains("admin") && !session.getAttribute("power").toString().equals("0")){
+                		
+                		res.sendRedirect("/homemaking/login");
+                		return;
+                	}
+                }
                   
             }  
             //session中的内容等于登录页面, 则可以继续访问其他区资源.  

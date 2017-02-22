@@ -48,10 +48,6 @@ public class WebInterface {
 	@RequestMapping(value="admin",method=RequestMethod.GET)
 	public ModelAndView admin(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin");  
         return modelAndView;
     }
@@ -59,10 +55,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_user_add",method=RequestMethod.GET)
 	public ModelAndView user_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_user_add");  
         return modelAndView;
     }
@@ -70,10 +62,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_user_power",method=RequestMethod.GET)
 	public ModelAndView user_power(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_user_power");  
         return modelAndView;
     }
@@ -81,10 +69,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_user_list",method=RequestMethod.GET)
 	public ModelAndView user_list(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_user_list");  
         return modelAndView;
     }
@@ -92,10 +76,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_goods_add",method=RequestMethod.GET)
 	public ModelAndView goods_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_goods_add");  
         return modelAndView;
     }
@@ -103,10 +83,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_goods_list",method=RequestMethod.GET)
 	public ModelAndView goods_list(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_goods_list");  
         return modelAndView;
     }
@@ -114,10 +90,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_goods_setmeal",method=RequestMethod.GET)
 	public ModelAndView goods_setmeal(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_goods_setmeal");  
         return modelAndView;
     }
@@ -125,10 +97,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_goods_setIsSell",method=RequestMethod.GET)
 	public ModelAndView goods_setIsSell(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_goods_setIsSell");  
         return modelAndView;
     }
@@ -136,10 +104,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_order_add",method=RequestMethod.GET)
 	public ModelAndView order_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_order_add");  
         return modelAndView;
     }
@@ -147,10 +111,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_order_list",method=RequestMethod.GET)
 	public ModelAndView order_list(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_order_list");  
         return modelAndView;
     }
@@ -158,10 +118,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_order_state",method=RequestMethod.GET)
 	public ModelAndView order_state(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_order_state");  
         return modelAndView;
     }
@@ -169,10 +125,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_order_serch",method=RequestMethod.GET)
 	public ModelAndView order_serch(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_order_serch");  
         return modelAndView;
     }
@@ -180,10 +132,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_order_pay",method=RequestMethod.GET)
 	public ModelAndView order_pay(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_order_pay");  
         return modelAndView;
     }
@@ -191,10 +139,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_ad_add",method=RequestMethod.GET)
 	public ModelAndView ad_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_ad_add");  
         return modelAndView;
     }
@@ -202,10 +146,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_ad_list",method=RequestMethod.GET)
 	public ModelAndView ad_list(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_ad_list");  
         return modelAndView;
     }
@@ -213,10 +153,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_notice_add",method=RequestMethod.GET)
 	public ModelAndView notice_add(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_notice_add");  
         return modelAndView;
     }
@@ -224,10 +160,6 @@ public class WebInterface {
 	@RequestMapping(value="admin_notice_list",method=RequestMethod.GET)
 	public ModelAndView notice_list(HttpSession session){ 
 		ModelAndView modelAndView = new ModelAndView();    
-		if(session.getAttribute("power").toString() != "0"){
-			modelAndView.setViewName("login");
-			return modelAndView;
-		}
         modelAndView.setViewName("admin_notice_list");  
         return modelAndView;
     }

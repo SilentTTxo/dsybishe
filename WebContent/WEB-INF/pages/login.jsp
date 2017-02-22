@@ -145,7 +145,7 @@
 
     <!-- BEGIN FORGOT PASSWORD FORM -->
 
-    <form class="form-vertical forget-form" action="index.html">
+    <form class="form-vertical forget-form">
 
       <h3 class="">Forget Password ?</h3>
 
@@ -189,7 +189,7 @@
 
     <!-- BEGIN REGISTRATION FORM -->
 
-    <form class="form-vertical register-form" action="index.html">
+    <form class="form-vertical register-form" action="#">
 
       <h3 class="">Sign Up</h3>
 
