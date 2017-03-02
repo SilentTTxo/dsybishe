@@ -1,0 +1,475 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Test",
+		"_postman_id": "3314bbb7-6c0d-8975-939f-1c7239bde02d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ad",
+			"description": "",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/ad/add?img=xxx&url=ddd&goodsid=123&msg",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/ad/getAll",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "del",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/ad/del?id=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GOODS",
+			"description": "",
+			"item": [
+				{
+					"name": "goods getall",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/getAll",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "searchByName",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/searchByName?name= 蒋",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/add?name=西瓜&price=25&img=xxx&des=又香又甜&isSell=0",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "isSell",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/isSell?id=1&isSell=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getType",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/getType",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "searchByType",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goods/searchByType?type= 小时工",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getAllByType",
+					"request": {
+						"url": "http://localhost:11111/api/getSystemInfo",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refund_status",
+									"value": "2",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "rigst test"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notice",
+			"description": "",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/notice/add?title=xxx&describe=ddd&type=aa&time=ss&url=aa",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/notice/getAll",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "del",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/notice/del?id=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"url": "http://localhost:8080/homemaking/api/user/login?username=TT&password=a132132",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "rigist test",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/regist?username=TT&password=a132132&img=https://pic2.zhimg.com/c323c1114d5b75bd021c326a34d09d01_xl.jpg",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/getAll",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "fixImg",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/fixImg?img=https://pic2.zhimg.com/7549aca1e238c450bbf75063f3a295dd_im.png",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "getInfo",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/getInfo",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"url": "http://127.0.0.1:8080/homemaking/api/user/logout",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "fixPaypassword",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/fixPaypassword?oldpassword&paypassword=a132132",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "paypassword",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/paypassword?paypassword=a132132",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "fixPower",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/fixPower?id=2&power=0",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "fixPassword",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/fixPassword?oldpassword=a132132&password=a132132",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "addMoney",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/user/addMoney",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "goodsOrder",
+			"description": "",
+			"item": [
+				{
+					"name": "getall",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/getAll",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/add?orderType=充钱&price=2.5&sum=10&goods=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "state",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/state?id=1&state=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserOrder",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/getUserOrder",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "addByUser",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/addByUser?orderType=充钱&price=2.5&sum=10&goods=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "check",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/check?id=2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "pay",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/pay?id=2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "hasdone",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/hasdone?id=2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "cancel",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/cancel?id=2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSum",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/getAllSum",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				},
+				{
+					"name": "getUserOrderByState",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/getUserOrderByState?state=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/goodsOrder/getById?id=1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "rigst test"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "web",
+			"description": "",
+			"item": [
+				{
+					"name": "picUpload",
+					"request": {
+						"url": "127.0.0.1:8080/homemaking/api/picUpload",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"enabled": true,
+									"warning": "",
+									"src": "Chrysanthemum.jpg"
+								}
+							]
+						},
+						"description": "rigst test"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
